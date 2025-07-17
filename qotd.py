@@ -6,7 +6,7 @@ import os
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 WEBHOOK_PATH = f"/webhook/{BOT_TOKEN}"
-WEBHOOK_URL = "https://your.render.app" + WEBHOOK_PATH
+WEBHOOK_URL = "https://qotd-39d0.onrender.com" + WEBHOOK_PATH
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
