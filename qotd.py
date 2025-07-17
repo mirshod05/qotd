@@ -50,6 +50,7 @@ web_app.on_startup.append(on_startup)
 web_app.on_shutdown.append(on_shutdown)
 
 if __name__ == "__main__":
-    print("Starting webhook server...")
-    web.run_app(web_app, host="0.0.0.0", port=10000)
+    port = int(os.getenv("PORT", "10000"))
+    print(f"Starting webhook server on port {port}...")
+    web.run_app(web_app, host="0.0.0.0", port=port)
 
