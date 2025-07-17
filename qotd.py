@@ -36,6 +36,13 @@ async def on_shutdown(app_):
     await app.bot.delete_webhook()
     print("Webhook deleted")
 
+async def handle(request: web.Request) -> web.Response:
+    """Handle incoming webhook updates from Telegram."""
+    data = await request.json()
+    update = Update.de_json(data, app.bot)
+    await app.update_queue.put(update)
+    return web.Response(text="ok")
+
 web_app = web.Application()
 web_app.router.add_post(WEBHOOK_PATH, handle)
 
